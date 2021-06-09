@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         checkToken.setOnClickListener(v ->{
             Log.d(TAG,"등록되어 있는 토큰 ID : "+ newToken);
             setTextToken.setText(newToken);
-            new JSONTask().execute("http://");
+            new JSONTask().execute("http://192.168.219.107:3300/post");
         });
     }
 
@@ -71,9 +71,9 @@ public class MainActivity extends AppCompatActivity {
 
                 try{
                     URL url = new URL(urls[0]);
-
+                    Log.d("conn","conn1");
                     con = (HttpURLConnection)url.openConnection();
-
+                    Log.d("conn","conn2");
                     con.setRequestMethod("POST");
                     con.setRequestProperty("Cache-Control","no-cache");
                     con.setRequestProperty("Content-Type","application/json");
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     con.setDoOutput(true);//Outstream으로 post 데이터를 넘겨주겠다는 의미
                     con.setDoInput(true);//Inputstream으로 서버로부터 응답을 받겠다는 의미
                     con.connect();
-
+                    Log.d("conn","conn3");
                     //서버로 보내기위해서 스트림 만듬
                     OutputStream outputStream = con.getOutputStream();
                     // 버퍼를 생성하고 넣음
